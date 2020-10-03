@@ -1,0 +1,19 @@
+.wrapper {
+  border: 2px solid #ccc;
+  width: 20%;
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.button {
+  margin-top: 20px;
+  width: 30%;
+    background-color: transparent;
+    border:  1px solid #ccc;
+    border-radius: 5px;
+      outline: none;
+}
+.input {
+  width: 40%;
+}

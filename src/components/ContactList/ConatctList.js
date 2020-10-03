@@ -1,5 +1,4 @@
 import React from "react";
-import { v4 } from "uuid";
 import styles from "./ContactList.module.css";
 export default class ContactList extends React.Component {
   render() {
@@ -16,7 +15,7 @@ export default class ContactList extends React.Component {
         ></input>
         <ul>
           {this.props.list.map((contact) => (
-            <li className={styles.li} key={v4()}>
+            <li className={styles.li} key={contact.id}>
               {contact.name}: {contact.number}
               <button
                 type="button"

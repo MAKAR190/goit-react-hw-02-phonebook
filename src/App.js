@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import ContactForm from "./components/ContactForm/ContactForm";
 import ContactList from "./components/ContactList/ConatctList";
+import { v4 } from "uuid";
 class App extends React.Component {
   state = {
     contacts: [
@@ -24,6 +25,7 @@ class App extends React.Component {
     let newContact = {
       name: this.state.name,
       number: this.state.number,
+      id: v4(),
     };
     if (
       this.state.contacts.find(
@@ -39,7 +41,10 @@ class App extends React.Component {
       });
     }
   };
-  handleDelete = ({ target }) => {};
+  handleDelete = ({ target }) => {
+    let deletedElem = this.state.contacts.find((el) => el.id === target.key);
+    return this.state.contacts.splice(deletedElem, 1);
+  };
 
   render() {
     const { name, contacts, number, filter } = this.state;

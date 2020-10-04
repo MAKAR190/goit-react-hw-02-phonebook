@@ -1,6 +1,13 @@
 import React from "react";
 import styles from "./ContactForm.module.css";
+import PropTypes from "prop-types";
 export default class ContactForm extends React.Component {
+  static propTypes = {
+    submit: PropTypes.func.isRequired,
+    nameChange: PropTypes.func.isRequired,
+    nameValue: PropTypes.string.isRequired,
+    numberValue: PropTypes.string.isRequired,
+  };
   render() {
     const { submit, nameChange, nameValue, numberValue } = this.props;
     return (

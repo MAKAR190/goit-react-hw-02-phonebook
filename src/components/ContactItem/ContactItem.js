@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./ContactItem.module.css";
-
+import PropTypes from "prop-types";
 function ContactItem({ deleteFunction, contact }) {
   return (
     <li className={styles.li} key={contact.id}>
@@ -16,3 +16,8 @@ function ContactItem({ deleteFunction, contact }) {
   );
 }
 export default ContactItem;
+
+ContactItem.propTypes = {
+  deleteFunction: PropTypes.func.isRequired,
+  contact: PropTypes.object.isRequired
+}

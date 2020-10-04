@@ -54,7 +54,7 @@ class App extends React.Component {
 
   render() {
     const { name, contacts, number, filter } = this.state;
-    const filterContacts = contacts.filter((el) => el.name.startsWith(filter));
+    const filterContacts = contacts.filter((el) => el.name.includes(filter));
 
     return (
       <div>
@@ -66,6 +66,7 @@ class App extends React.Component {
           submit={this.handleSubmit}
         />
         <h2>Contacts</h2>
+        <h4>Find contacts by name</h4>
         <Filter filterChange={this.handleChange} filterValue={filter} />
         <ContactList
           deleteFunction={this.handleDelete}

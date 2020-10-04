@@ -3,6 +3,7 @@ import "./App.css";
 import ContactForm from "./components/ContactForm/ContactForm";
 import ContactList from "./components/ContactList/ConatctList";
 import { v4 } from "uuid";
+import Filter from "./components/Filter/Filter";
 class App extends React.Component {
   state = {
     contacts: [
@@ -52,7 +53,7 @@ class App extends React.Component {
 
     return (
       <div>
-        <h2>Phonebook</h2>
+        <h1>Phonebook</h1>
         <ContactForm
           numberValue={number}
           nameValue={name}
@@ -60,11 +61,10 @@ class App extends React.Component {
           submit={this.handleSubmit}
         />
         <h2>Contacts</h2>
+        <Filter filterChange={this.handleChange} filterValue={filter} />
         <ContactList
           deleteFunction={this.handleDelete}
-          filterChange={this.handleChange}
-          filterValue={filter}
-          list={contacts}
+          list={filterContacts}
           number={number}
         />
       </div>

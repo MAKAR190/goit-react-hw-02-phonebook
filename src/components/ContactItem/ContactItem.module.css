@@ -1,6 +1,11 @@
-.input {
+.li:hover .btn {
+  display: inline;
+  position: absolute;
+}
+.li {
   width: 10%;
 }
+
 .btn {
   margin-left: 10px;
   background-color: transparent;
@@ -8,11 +13,4 @@
   border-radius: 5px;
   display: none;
   outline: none;
-}
-.li:hover .btn{
-display:inline;
-position: absolute;
-}
-.li{
-  width: 10%;
 }

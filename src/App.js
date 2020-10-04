@@ -6,11 +6,7 @@ import { v4 } from "uuid";
 import Filter from "./components/Filter/Filter";
 class App extends React.Component {
   state = {
-    contacts: [
-      { name: "Makar", number: "45847583" },
-      { name: "Misha", number: "4584734325" },
-      { name: "Bogdan", number: "45844665" },
-    ],
+    contacts: [],
     name: "",
     number: "",
     filter: "",
@@ -42,9 +38,18 @@ class App extends React.Component {
       });
     }
   };
-  handleDelete = ({ target }) => {
-    let deletedElem = this.state.contacts.find((el) => el.id === target.key);
-    return this.state.contacts.splice(deletedElem, 1);
+  handleDelete = (id) => {
+    this.setState((prevState) => {
+      return {
+        contacts: prevState.contacts.filter((contact) => {
+          if (contact.id === id) {
+            return false;
+          } else {
+            return true;
+          }
+        }),
+      };
+    });
   };
 
   render() {

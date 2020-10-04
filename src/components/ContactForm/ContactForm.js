@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./ContactForm.module.css";
 export default class ContactForm extends React.Component {
   render() {
-    const { submit, nameChange, nameValue,numberValue } = this.props;
+    const { submit, nameChange, nameValue, numberValue } = this.props;
     return (
       <form className={styles.wrapper} onSubmit={submit}>
         <p>Name</p>

@@ -7,21 +7,16 @@ import Filter from "./components/Filter/Filter";
 class App extends React.Component {
   state = {
     contacts: [],
-    name: "",
-    number: "",
     filter: "",
   };
-
-  handleChange = ({ target }) => {
+    handleChange = ({ target }) => {
     const { name, value } = target;
     this.setState({ [name]: value });
   };
-
-  handleSubmit = (evt) => {
-    evt.preventDefault();
+  handleSubmit = (contact) => {
     let newContact = {
-      name: this.state.name,
-      number: this.state.number,
+      name: contact.name,
+      number: contact.number,
       id: v4(),
     };
     if (
@@ -53,25 +48,19 @@ class App extends React.Component {
   };
 
   render() {
-    const { name, contacts, number, filter } = this.state;
+    const {contacts,filter } = this.state;
     const filterContacts = contacts.filter((el) => el.name.includes(filter));
 
     return (
       <div>
         <h1>Phonebook</h1>
-        <ContactForm
-          numberValue={number}
-          nameValue={name}
-          nameChange={this.handleChange}
-          submit={this.handleSubmit}
-        />
+        <ContactForm submit={this.handleSubmit} />
         <h2>Contacts</h2>
         <h4>Find contacts by name</h4>
         <Filter filterChange={this.handleChange} filterValue={filter} />
         <ContactList
           deleteFunction={this.handleDelete}
           list={filterContacts}
-          number={number}
         />
       </div>
     );

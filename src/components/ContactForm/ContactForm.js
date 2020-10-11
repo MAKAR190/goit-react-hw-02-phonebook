@@ -2,24 +2,32 @@ import React from "react";
 import styles from "./ContactForm.module.css";
 import PropTypes from "prop-types";
 export default class ContactForm extends React.Component {
+  state = {
+    name: "",
+    number:""
+  }
   static propTypes = {
     submit: PropTypes.func.isRequired,
-    nameChange: PropTypes.func.isRequired,
-    nameValue: PropTypes.string.isRequired,
-    numberValue: PropTypes.string.isRequired,
   };
+    handleChange = ({ target }) => {
+    const { name, value } = target;
+    this.setState({ [name]: value });
+  };
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.submit(this.state);
+  }
   render() {
-    const { submit, nameChange, nameValue, numberValue } = this.props;
     return (
-      <form className={styles.wrapper} onSubmit={submit}>
+      <form className={styles.wrapper} onSubmit={this.handleSubmit}>
         <p>Name</p>
         <input
           className={styles.input}
           type="text"
           placeholder="Enter name"
           name="name"
-          value={nameValue}
-          onChange={nameChange}
+          value={this.state.name}
+          onChange={this.handleChange}
         ></input>
         <p>Number</p>
         <input
@@ -27,8 +35,8 @@ export default class ContactForm extends React.Component {
           type="text"
           placeholder="Enter number"
           name="number"
-          value={numberValue}
-          onChange={nameChange}
+          value={this.state.number}
+          onChange={this.handleChange}
         ></input>
         <button className={styles.button} type="submit">
           Add contact

@@ -3,7 +3,7 @@ import styles from "./ContactItem.module.css";
 import PropTypes from "prop-types";
 function ContactItem({ deleteFunction, contact }) {
   return (
-    <li className={styles.li} key={contact.id}>
+    <li className={styles.li}>
       {contact.name}: {contact.number}
       <button
         type="button"
